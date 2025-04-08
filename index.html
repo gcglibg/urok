@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href ="style.css">
+	</head>
+	<body>
+			
+		<div>
+			<div class = "dv">блок 1</div>
+			<div class = "dv">блок 2</div>
+			<div class = "dv">блок 3</div>
+			<div class = "dv">блок 4</div>
+		</div>
+		<input type="button" value = "зімнити видимість" onclick = "change()">	
+		<br>
+		<br>
+		<div>
+			<div class = "dv2">блок 1</div>
+			<div class = "dv2">блок 2</div>
+			<div class = "dv2">блок 3</div>
+			<div class = "dv2">блок 4</div>
+		</div>
+		<input type="button" value = "переключити елемент" onclick = "change2()">	
+		<script>
+			function delay(ms) {
+   				return new Promise(resolve => setTimeout(resolve, ms));
+			}
+
+			//1 zavd
+			var arr = document.getElementsByClassName("dv");
+			var c = 0;
+			async function change(){
+				if(c == 0)
+				{
+					for(var i = 0; i < 4; i++)
+					{
+						for(let op = 0; op <= 1; op += 0.1)
+						{
+							arr[i].style.opacity = op;
+							await delay(10);
+						}
+						await delay(100);
+					}
+					c = 1;
+				}
+				else if(c == 1)
+				{
+					for(var i = 0; i < 4; i++)
+					{
+						for(let op = 1; op > 0; op -= 0.1)
+						{
+							arr[i].style.opacity = op;
+							await delay(10);
+						}
+						await delay(100);
+					}
+					c = 0;
+				}
+			}
+
+			//2 zavd
+			var arr2 = document.getElementsByClassName("dv2");
+			var c2 = 0;
+			function change2()
+			{
+				if(c2 == 4)
+					c2 = 0;
+
+				switch(c2){
+				case 0:
+					arr2[0].style.opacity = 1;
+					arr2[1].style.opacity = 0;
+					arr2[2].style.opacity = 0;
+					arr2[3].style.opacity = 0;
+					c2++;
+					break;
+				case 1:
+					arr2[0].style.opacity = 0;
+					arr2[1].style.opacity = 1;
+					arr2[2].style.opacity = 0;
+					arr2[3].style.opacity = 0;
+					c2++;
+					break;
+
+				case 2:
+					arr2[0].style.opacity = 0;
+					arr2[1].style.opacity = 0;
+					arr2[2].style.opacity = 1;
+					arr2[3].style.opacity = 0;
+					c2++;
+					break;
+
+				case 3:
+					arr2[0].style.opacity = 0;
+					arr2[1].style.opacity = 0;
+					arr2[2].style.opacity = 0;
+					arr2[3].style.opacity = 1;
+					c2++;
+					break;
+
+				}
+
+				//3 zavd
+
+				
+			}
+		</script>
+	</body>
+</html>
