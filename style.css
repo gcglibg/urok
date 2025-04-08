@@ -1,0 +1,22 @@
+.rt{
+    transform: rotate(0deg);
+    border-color: #ff0000;
+    border-style: solid;
+
+}
+.str{
+    position: absolute;
+    top: 100px;
+    left: 500px;
+}
+
+.op{
+    position: absolute;
+    top: 100px;
+    left: 500px;
+    opacity: 1;
+}
+
+.rgb{
+    filter: grayscale(0%);
+}

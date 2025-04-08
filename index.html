@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ua">
+    <head>
+        <meta charset="UTF-8">
+        <title>web</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <img class = "rt" id = "cat" src ="img/2.jpg" height = "200" width = "200">
+        <div>
+            <input type = "button" value="поворот в право" onclick="rotR()"/>
+            <input type = "button" value="поворот в ліво" onclick="rotL()"/>
+            <br>
+            <input type = "button" value="зміна кльору" onclick="rcolor()"/>
+        </div>
+
+
+        <br>
+        <img id = "rot3" src ="img/3.png" height = "150" width = "150">
+        <br>
+        <br>
+        <input type = "range" id = "slide" min = "-180" max = "180">
+        <br>
+        <div id = "str" class = "str">
+            <img class = "str2" src ="img/str.png" height = "200">
+        </div>
+        <input type = "range" id = "slide2" min="0" max="1" step="0.01" value="1">
+        <br>
+        <br>
+        <div>
+            <img id = "rgb" src ="img/rgb.jpg" height = "200">
+            <br>
+            <input type = "button" id = "doBlack" value = "чорнобілий" onclick= "doBlack()"/>
+            <input type = "button" id = "doDefault" value = "звичайний" onclick= "doDefault()"/>
+
+
+        </div>
+
+        <script>
+            //1 завдання
+            let img = document.getElementById("cat");
+            img.addEventListener("mouseenter",function() {
+                img.src = "img/1.jpg";
+            });
+            img.addEventListener("mouseleave",function() {
+                img.src = "img/2.jpg";
+            });
+            //1 завдання\
+
+            //2 завдання
+            let imgr = document.getElementById("cat");
+            function rotR() {
+                imgr.style.transform = "rotate(90deg)";
+            }
+            function rotL() {
+                imgr.style.transform = "rotate(-90deg)";
+            }
+            //2 завдання\
+
+
+            //3 завдання
+            let slide = document.getElementById("slide");
+            let slided = document.getElementById("rot3");
+            slide.addEventListener("input", function() {
+                let angle = slide.value;
+                slided.style.transform = "rotate(" + angle + "deg)";
+            });
+            //3 завдання\
+
+            //4 завдання
+             let str = document.getElementById("str");
+             let posx = 500, posy= 100;
+             document.addEventListener("keydown", (e) => {
+                 switch (e.key) {
+                     case "ArrowUp":
+                         posy -= 10;
+                     break;
+
+                     case "ArrowDown":
+                         posy += 10;
+                     break;
+
+                     case "ArrowLeft":
+                         posx -= 10;
+                         break;
+
+                     case "ArrowRight":
+                         posx += 10;
+                         break;
+                 }
+                 str.style.left = posx + "px";
+                 str.style.top = posy + "px";
+             });
+            //4 завдання\
+
+            //5 завдання\
+            function rcolor(){
+                document.getElementById("cat").style.borderColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+            }
+            //5 завдання\
+
+            //6 завдання
+            function doBlack(){
+                document.getElementById("rgb").style.filter = "grayscale(100%)";
+            }
+            function doDefault(){
+                document.getElementById("rgb").style.filter = "grayscale(0%)";
+            }
+
+            //6 завдання\
+
+            //7 завдання
+            let opacityImg = document.getElementById("rot3");
+            let slr2 = document.getElementById("slide2");
+            slr2.addEventListener("input", function() {
+                opacityImg.style.opacity = slr2.value;
+            });
+            //7 завдання\
+        </script>
+    </body>
+</html>
